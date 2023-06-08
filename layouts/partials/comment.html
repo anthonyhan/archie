@@ -1,0 +1,11 @@
+{{- $.Scratch.Set "isDisqus" true -}}
+<!-- Check if disqus short name is given -->
+{{ if not .Site.DisqusShortname }}
+{{- $.Scratch.Set "isDisqus" false -}}
+{{ end }}
+
+{{- if eq ($.Scratch.Get "isDisqus") true -}}
+{{- partial "disqus.html" . -}}
+{{- else -}}
+{{- partial "utterances.html" . -}}
+{{- end -}}
